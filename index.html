@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CairoCode Slider</title>
+	<style>
+		/*-CairoCoder Slide-*/
+		.cc-wrapper {
+			width: 960px;
+		    max-height: 495px;
+		    overflow: hidden;
+		    position: relative;
+		}
+		.cc-slide {
+		    display: none;
+		}
+		.cc-slide.cc-active {
+		    display: block;
+		}
+		.slide {
+		    width: 100%;
+		    float: left;
+		    height: auto;
+		}
+		.teaser {
+		    float: left;
+		    max-height: 100%;
+		    position: absolute;
+		    top: 0;
+		    right: -15%;
+		    opacity: 0.8;
+		    cursor: pointer;
+		    border-radius: 5px 0 0 5px;
+		    transition-timing-function: ease-in;
+		    transition: 0.25s;
+		}
+		.teaser:hover {
+		    right: 0;
+		    opacity: 1;
+		    transition-timing-function: ease-out;
+		    transition: 0.25s;
+		}
+	</style>
+</head>
+<body>
+	<div class="cc-slider">
+        <ul class="cc-wrapper">
+            <li class="cc-slide cc-active">
+                <img class="slide" src="slides/slide1.png" alt="slide1">
+                <img class="teaser" src="slides/teaser1.png" alt="teaser1">
+            </li>
+            <li class="cc-slide">
+                <img class="slide" src="slides/slide2.png" alt="slide2">
+                <img class="teaser" src="slides/teaser2.png" alt="teaser2">
+            </li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script>
+    	$('.teaser').click(function () {
+	        var next = $(this).parent().next('.cc-slide');
+	        $(this).parent().hide();
+	        if (next.length > 0) {
+	            next.show();
+	        } else {
+	            $('.cc-slide').hide().first().show();
+	        }
+	    });
+    </script>
+</body>
+</html>
